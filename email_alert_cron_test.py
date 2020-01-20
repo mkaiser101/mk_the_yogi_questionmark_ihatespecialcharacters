@@ -1,6 +1,6 @@
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import smtplib, ssl, pickle, base64
+import smtplib, ssl, pickle, base64, sys
 
 smtp_server = "smtp.gmail.com"
 sender = "mk.the.yogi@gmail.com"
@@ -14,10 +14,19 @@ message["Subject"] = "testing email alerts via cron"
 message.attach(MIMEText("This was a test"))
 context = ssl.create_default_context()
 
-with open("creds.bin", 'rb') as readfile:
-    auth_list = pickle.load(readfile)
-password = base64.decodebytes(auth_list)
-password = password.decode("utf-8") 
+if sys.argv[1]:
+    creds = sys.argv[1]
+    with open(creds, 'rb') as readfile:
+        auth_list = pickle.load(readfile)
+    password = base64.decodebytes(auth_list)
+    password = password.decode("utf-8") 
+
+
+else:
+    with open("creds.bin", 'rb') as readfile:
+        auth_list = pickle.load(readfile)
+    password = base64.decodebytes(auth_list)
+    password = password.decode("utf-8") 
 
 
 try:
