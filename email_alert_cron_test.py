@@ -22,7 +22,7 @@ if sys.argv[1]:
     password = password.decode("utf-8") 
 
 
-else:
+elif:
     with open("creds.bin", 'rb') as readfile:
         auth_list = pickle.load(readfile)
     password = base64.decodebytes(auth_list)

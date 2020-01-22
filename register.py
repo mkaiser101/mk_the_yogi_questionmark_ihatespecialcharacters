@@ -13,6 +13,8 @@ driver = webdriver.Firefox(executable_path=path, firefox_binary=binary)
 #driver.get('https://www.earthtreksclimbing.com/crystal-city/yoga/')
 driver.get('https://app.rockgympro.com/b/widget/?a=list&&widget_guid=866f9c3341cc4bc6888c922779411230&random=5e2236f3ed592&iframeid=&mode=p')
 driver.find_element_by_xpath('/html/body/div[1]/div/div[3]/div[2]/div/fieldset[11]/div/a').click()
+
+
 # element = driver.find_element_by_id("fl-post-7284").click()
 #element.send_keys(user_name)
 #element = driver.find_element_by_id("pass")
