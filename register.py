@@ -2,17 +2,94 @@ from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
 
 user_name = "fatALBERT"
 password = "yoyoMAisTHEmove"
 
+first_name = 'Matthew'
+middle_name = 'P'
+last_name = 'Kaiser'
 binary = FirefoxBinary(r'C:\\Program Files\\Mozilla Firefox\\firefox.exe')
 path = r'C:\\geckodriver-path\\geckodriver.exe'
 driver = webdriver.Firefox(executable_path=path, firefox_binary=binary)
 
-#driver.get('https://www.earthtreksclimbing.com/crystal-city/yoga/')
 driver.get('https://app.rockgympro.com/b/widget/?a=list&&widget_guid=866f9c3341cc4bc6888c922779411230&random=5e2236f3ed592&iframeid=&mode=p')
-driver.find_element_by_xpath('/html/body/div[1]/div/div[3]/div[2]/div/fieldset[11]/div/a').click()
+element = driver.find_element_by_xpath('/html/body/div[1]/div/div[3]/div[2]/div/fieldset[12]/div/a')
+element.click()
+element = driver.find_element_by_xpath('/html/body/div[1]/div/form/div[6]/div/fieldset/table/tbody/tr[2]/td[1]/a[2]')
+element.click()
+element = driver.find_element_by_xpath('/html/body/div[1]/div/form/fieldset/div[1]/table/tbody/tr/td[4]/a')
+element.click()
+
+element = driver.find_element_by_id("pfirstname-pindex-1-1")
+element.send_keys(first_name)
+element = driver.find_element_by_id("plastname-pindex-1-1")
+element.send_keys(last_name)
+# element = driver.find_element_by_id("pmiddle-pindex-1-1")
+# element.send_keys(middle_name)
+
+select = Select(driver.find_element_by_id("participant-birth-pindex-1month"))
+select.select_by_visible_text("May")
+select = Select(driver.find_element_by_id("participant-birth-pindex-1day"))
+select.select_by_visible_text("6")
+select = Select(driver.find_element_by_id("participant-birth-pindex-1year"))
+select.select_by_visible_text("1996")
+
+element = driver.find_element_by_xpath('/html/body/div[1]/div/form/a[2]')
+element.click()
+
+select = Select(driver.find_element_by_id("copy-pinfo-select"))
+select.select_by_visible_text("Matthew Kaiser")
+
+element = driver.find_element_by_id("customer-email")
+element.send_keys("mkaiser101@gmail.com")
+
+element = driver.find_element_by_id("customer-phone")
+element.send_keys("mkaiser101@gmail.com")
+
+element = driver.find_element_by_id("customer-address-line1")
+element.send_keys("3000 Spout Run Pwky Apt B503")
+
+element = driver.find_element_by_id("customer-city")
+element.send_keys("Arlington")
+
+element = driver.find_element_by_id("customer-state")
+element.send_keys("VA")
+
+element = driver.find_element_by_id("customer-zip")
+element.send_keys("22201")
+
+element = driver.find_element_by_id("confirm_booking_button")
+element.click()
+
+
+
+
+
+
+
+
+
+# ids = driver.find_elements_by_xpath('//*[@id]')
+# for ii in ids:
+#     #print (ii.tag_name)
+#     print(ii.get_attribute('id'))    # id name as string
+
+
+
+
+
+# #element.close()
+
+    
+
+
+# element = driver.find_element_by_xpath('//*[@id="pcount-pid-1-316074"]').click()
+# element.send_keys('1')
+# element.send_keys(Keys.RETURN)
+# element.close()
+
 
 
 # element = driver.find_element_by_id("fl-post-7284").click()
